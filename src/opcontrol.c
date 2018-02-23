@@ -52,44 +52,44 @@ void autoStack(bool stack){
 void operatorControl() {
     while (1) {
 //Drive Train Setup
-        driveSetSpeed(joystickGetAnalog(2, 3), joystickGetAnalog(2, 2));
+      driveSetSpeed(joystickGetAnalog(2, 3), joystickGetAnalog(2, 2));
 
 //Lift Setup
-        liftSetSpeed(joystickGetAnalog(1, 3), joystickGetAnalog(1, 3));
+      liftSetSpeed(joystickGetAnalog(1, 3), joystickGetAnalog(1, 3));
 
 //Four Bar Setup
-        fourBarSetSpeed(joystickGetAnalog(1, 2));
+      fourBarSetSpeed(joystickGetAnalog(1, 2));
 
 //Claw Setup
-        if (joystickGetDigital(1, 8, JOY_LEFT)) {
-          motorSet(coneIntake, -80); //In
-        }
-        else if (joystickGetDigital(1, 8, JOY_RIGHT)) {
-          motorSet(coneIntake, 80); //Out
-        }
-        else{
-          motorSet(coneIntake, -35); //Always applying inwards tourque
-        }
+      if (joystickGetDigital(1, 8, JOY_LEFT)) {
+        motorSet(coneIntake, -75); //In
+      }
+      else if (joystickGetDigital(1, 8, JOY_RIGHT)) {
+        motorSet(coneIntake, 75); //Out
+      }
+      else{
+        motorSet(coneIntake, -35); //Always applying inwards tourque
+      }
 
 //Mobile Goal Intake Buttons
-        if(joystickGetDigital(2, 6, JOY_DOWN) == 1){ //Mogo up
-          mobileSetSpeed(80, 80);
-        }
-        else if(joystickGetDigital(2, 5, JOY_DOWN) == 1){ //Mogo down
-          mobileSetSpeed(-80, -80);
-        }
-        else{ //If nothing, sets motors to 0
-          mobileSetSpeed(0, 0);
-        }
+      if(joystickGetDigital(2, 6, JOY_DOWN) == 1){ //Mogo up
+        mobileSetSpeed(80, 80);
+      }
+      else if(joystickGetDigital(2, 5, JOY_DOWN) == 1){ //Mogo down
+        mobileSetSpeed(-80, -80);
+      }
+      else{ //If nothing, sets motors to 0
+        mobileSetSpeed(0, 0);
+      }
 
 //Sensors
-        ultDistance = ultrasonicGet(sonar);
-        potValFourBarL = analogRead(1);
-        potValFourBarR = analogRead(2);
-        potValLiftL = analogRead(3);
-        potValLiftR = analogRead(4);
-        encValDriveL = encoderGet(encDriveR);
-        encValDriveR = encoderGet(encDriveL);
-        delay(20);
+      ultDistance = ultrasonicGet(sonar);
+      potValFourBarL = analogRead(1);
+      potValFourBarR = analogRead(2);
+      potValLiftL = analogRead(3);
+      potValLiftR = analogRead(4);
+      encValDriveL = encoderGet(encDriveR);
+      encValDriveR = encoderGet(encDriveL);
+      delay(20);
       }
     }
